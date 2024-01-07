@@ -15,3 +15,13 @@ Aplicação em máquina Amazon EC2 utilizando Terraform e Docker.
 Este nível irá ensiná-lo a:
 - Execute um contêiner Docker com Postgres usando um arquivo docker-compose
 - Conecte seu aplicativo springboot ao contêiner de banco de dados Postgres.
+
+**Level 2**
+<img src=diagram/tutorial-diagram-level-2.jpg>
+
+Este nível irá ensiná-lo a:
+- execute um Docker para construir a imagem do seu aplicativo
+- configure sua imagem para o arquivo docker-compose
+- execute sua imagem em um contêiner docker
+- Acesse seu aplicativo usando swagger e carteiro
+- Faça upload da sua imagem API para o dockerhub
