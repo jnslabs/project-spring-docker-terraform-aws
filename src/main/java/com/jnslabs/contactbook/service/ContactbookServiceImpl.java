@@ -3,6 +3,7 @@ package com.jnslabs.contactbook.service;
 import com.jnslabs.contactbook.entity.Contact;
 import com.jnslabs.contactbook.repository.ContactbookRepository;
 import com.jnslabs.contactbook.service.client.ViaCepClient;
+import com.jnslabs.contactbook.service.client.response.AddressResponse;
 import com.jnslabs.contactbook.service.interfaces.ContactbookService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -26,16 +27,28 @@ public class ContactbookServiceImpl implements ContactbookService {
 
     @Override
     public Contact save(Contact contact) {
-        return null;
+        log.info("M save, contact={}, NEW", contact);
+        try {
+            AddressResponse address = viaCepClient.getAddress(contact.getCep());
+            log.info("M getAddress, address={}", address);
+            contact.setAddress(address);
+            log.info("M save, contact={}, SAVING", contact);
+            return repository.save(contact);
+        }catch (Exception ex){
+            log.info("Cannot find the address with cep={}, ERROR={}.", contact.getCep(), ex.getMessage());
+
+            throw new IllegalArgumentException("Cannot find the address with cep: " + contact.getCep());
+        }
     }
 
     @Override
     public List<Contact> getAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public Optional<Contact> getByName(String name) {
-        return Optional.empty();
+        log.info("M getByName, name={}, NEW", name);
+        return repository.findByName(name);
     }
 }
