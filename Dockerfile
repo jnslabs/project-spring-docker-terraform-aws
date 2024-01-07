@@ -1,6 +1,6 @@
 FROM maven:3.8.5-openjdk-17 as build
 WORKDIR /build
-COPY . .
+COPY deploy/docker .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17-jdk-slim

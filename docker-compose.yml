@@ -17,6 +17,9 @@ services:
 
   contact-book:
     container_name: contact-book
+    build:
+      dockerfile: .
+      context: .
     image: jnsousa/contact-book-api:latest
     environment:
       SERVER_PORT: 3000
