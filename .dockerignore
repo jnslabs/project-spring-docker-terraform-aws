@@ -1,5 +1,9 @@
 .idea
+.github
 .gitignore
 Help.md
 README.md
-mvnw*
+mvnw/**
+.git
+diagram
+deploy/**
