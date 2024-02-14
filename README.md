@@ -25,3 +25,19 @@ Este nível irá ensiná-lo a:
 - execute sua imagem em um contêiner docker
 - Acesse seu aplicativo usando swagger e carteiro
 - Faça upload da sua imagem API para o dockerhub
+
+**Level 3**
+<img src=diagram/tutorial-diagram-level-3.jpg>
+
+Este nível irá te ensinar:
+- Compreendendo a infraestrutura básica da AWS
+- Criar usuário IAM
+- Configurar perfil aws cli
+- Crie os arquivos terraform necessários:
+  - provider
+  - main
+- Criar par de chaves ssh
+- Configurar arquivo de modelo userdata
+- Comandos do Terraform
+- Acesse o host ec2 da máquina local
+- Acesse sua API rodando em ec2 usando swagger e postman

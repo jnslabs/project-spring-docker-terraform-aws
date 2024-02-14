@@ -1,3 +1,4 @@
+#Esse composer é gitaction gerar a imagem e precisa ter gerado local
 version: '3'
 
 services:
@@ -34,3 +35,4 @@ services:
 networks:
   docker-network:
     driver: bridge
+
