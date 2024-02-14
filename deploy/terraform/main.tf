@@ -15,7 +15,7 @@ resource "aws_subnet" "contactbook_subnet_pub_1a" {
   map_public_ip_on_launch = true
 
   tags = {
-    "Name" = "Main"
+    "Name" = "contactbook_subnet_pub_1a"
   }
 
 }
@@ -47,19 +47,19 @@ resource "aws_route_table_association" "contactbook_rtba_pub_1a" {
   subnet_id      = aws_subnet.contactbook_subnet_pub_1a.id
 }
 
-resource "aws_instance" "contactbook_ec2" {
-  instance_type = "t2.micro"
-  key_name = aws_key_pair.contactbook_key.id
-  vpc_security_group_ids = [aws_vpc.contactbook_vpc_1.id]
-  subnet_id = aws_subnet.contactbook_subnet_pub_1a.id
-  ami = data.aws_ami.contactbook_server_ami.id
-  user_data = file("userdata.tpl")
+resource "aws_instance" "contactbook_ec2_inst" {
+  instance_type          = "t2.micro"
+  ami                    = data.aws_ami.contactbook_server_ami.id
+  key_name               = aws_key_pair.contactbook_key.id
+  vpc_security_group_ids = [aws_security_group.contactbook_sg.id]
+  subnet_id              = aws_subnet.contactbook_subnet_pub_1a.id
+  user_data              = file("userdata.tpl")
 
   root_block_device {
     volume_size = 8
   }
 
   tags = {
-    Name = "contactbook_ec2"
+    Name = "contactbook_ec2_inst"
   }
 }
