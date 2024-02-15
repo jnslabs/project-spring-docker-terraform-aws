@@ -1,8 +1,8 @@
 name: Create terraform plan
 
 on:
-  push:
-    branches: ['iac/**']       
+  pull_request:
+      paths: 'deploy/terraform'      
 
   workflow_call: 
 
@@ -61,5 +61,11 @@ jobs:
             <details><summary>Show Plan</summary>
             \`\`\`${process.env.PLAN}\`\`\`
             </details>
-            
+            *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.TF_WORKING_DIR }}\`, Workflow: \`${{ github.workflow }}\`*`;
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
             
