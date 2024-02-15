@@ -1,4 +1,4 @@
-name: Continuos Integrations
+name: Continuos Integrations feature
 
 on:
   push:
