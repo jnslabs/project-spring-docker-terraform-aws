@@ -2,7 +2,9 @@ name: Continuos Integrations develop
 
 on:
   pull_request:
-    branches: ['develop']
+    paths: 
+      - 'deploy/docker' 
+    
 
 jobs:
 

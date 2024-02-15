@@ -2,7 +2,7 @@ name: Create terraform plan
 
 on:
   pull_request:
-      paths: 'deploy/terraform'      
+      branches: ['develop']      
 
   workflow_call: 
 
