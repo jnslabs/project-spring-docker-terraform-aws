@@ -2,6 +2,7 @@ name: Create terraform plan
 
 on:
   pull_request:
+    branches: [develop]
     types: [labeled]      
 
   workflow_call: 
@@ -62,7 +63,7 @@ jobs:
             \`\`\`${process.env.PLAN}\`\`\`
             </details>
             *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.TF_WORKING_DIR }}\`, Workflow: \`${{ github.workflow }}\`*`;
-            github.issues.createComment({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
