@@ -1,8 +1,10 @@
-name: Continuos Integrations
+name: Continuos Integrations develop
 
 on:
   pull_request:
-    branches: ['develop']
+    paths: 
+      - 'deploy/docker' 
+    
 
 jobs:
 
@@ -40,3 +42,4 @@ jobs:
       - name: Push to Docker Hub Container Registry
         run: |
             docker push ${{ secrets.DOCKER_USERNAME }}/contact-book-api:latest
+            echo ${{env.REPO_NAME}}
