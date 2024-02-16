@@ -3,7 +3,9 @@ name: Create terraform apply
 on:
   push:
     tags:
-      - v[12].[0-9]+.[0-9]+      
+      - v[12].[0-9]+.[0-9]+
+      
+    branches: [main]
 
   workflow_call: 
 
@@ -46,5 +48,9 @@ jobs:
 
       - name: Terraform Apply
         id: tf-apply
+        run: terraform apply -auto-approve
+
+      - name: Terraform Destroy
+        id: tf-destroy
         run: terraform apply -auto-approve
             
